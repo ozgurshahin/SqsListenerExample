@@ -1,0 +1,9 @@
+aws:
+  sqs:
+    accessKey: xxxxx
+    secretKey: xxxx
+    endpoint: http://localhost:4591
+    region: eu-west-1
+
+server:
+  port: 8080

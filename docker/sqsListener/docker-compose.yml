@@ -1,0 +1,21 @@
+version: "3.3"
+
+services:
+  sqs-listener-localstack:
+    image: localstack/localstack:0.11.2
+    environment:
+      - EDGE_PORT=4566
+      - SERVICES=sqs
+      - DEFAULT_REGION=eu-west-2
+      - DATA_DIR=/tmp/localstack/data
+    ports:
+      - "4591:4566"
+      - "8091:8080"
+    volumes:
+      - sqs-listener-localstack-data:/tmp/localstack
+      - ./aws-init.sh:/docker-entrypoint-initaws.d/aws-init.sh
+
+volumes:
+  sqs-listener-localstack-data:
+
+#run on terminal: docker-compose -f docker-compose.yml up -d --build
